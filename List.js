@@ -15,6 +15,16 @@ const List = (props) => {
     },
   ]);
 
+  const backColor = (index) => {
+    if (data.length < 6) {
+      return `rgba(30,103,100,0.9)`;
+    } else {
+      if (index < 6) {
+        return `rgba(30,103,100,0.${data.length - index})`;
+      } else return `rgba(30,103,100,0.7)`;
+    }
+  };
+
   const { task, setnewTask } = props;
   let list = data;
   useEffect(() => {
@@ -35,7 +45,14 @@ const List = (props) => {
     <FlatList
       data={data}
       renderItem={({ item, index }) => (
-        <TouchableOpacity style={styles.item}>
+        <TouchableOpacity
+          style={[
+            styles.item,
+            {
+              backgroundColor: backColor(index),
+            },
+          ]}
+        >
           <Text style={styles.title}>{item.title}</Text>
           <TouchableOpacity
             style={[styles.title, styles.x]}
@@ -66,16 +83,17 @@ const List = (props) => {
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: "#cecead",
     padding: 20,
     marginVertical: 8,
     flexDirection: "row",
     justifyContent: "space-between",
     marginHorizontal: 10,
     alignItems: "center",
+    borderRadius: 10,
   },
   title: {
     fontSize: 32,
+    color: "#ececec",
   },
   x: {
     paddingY: 20,

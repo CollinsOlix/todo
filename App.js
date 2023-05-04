@@ -19,39 +19,48 @@ export default function App() {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar style="auto" backgroundColor="#0f1fae" />
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Todo App</Text>
-      </View>
-      <View style={styles.inputArea}>
-        <TextInput
-          editable
-          value={textInput}
-          maxLength={40}
-          style={styles.textInput}
-          clearTextOnFocus={true}
-          onChangeText={(textInput) => setTextInput(textInput)}
-          onSubmitEditing={() => submitEdit()}
-        />
-      </View>
-      <View style={styles.body}>
-        <List task={newTask} setnewTask={setnewTask} />
+      <StatusBar style="auto" backgroundColor="#204c4c" />
+      <View style={styles.wrapper}>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Todo App</Text>
+        </View>
+        <View style={styles.inputArea}>
+          <TextInput
+            editable
+            value={textInput}
+            maxLength={40}
+            style={styles.textInput}
+            clearTextOnFocus={true}
+            onChangeText={(textInput) => setTextInput(textInput)}
+            onSubmitEditing={() => submitEdit()}
+            onFocus={() => setTextInput("")}
+          />
+        </View>
+        <View style={styles.body}>
+          <List task={newTask} setnewTask={setnewTask} />
+        </View>
       </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    shadowColor: "black",
+    shadowOffset: { width: -2, height: 4 },
+    shadowRadius: 4,
+    shadowOpacity: 0.4,
+  },
   textInput: {
     fontSize: 20,
     paddingTop: 5,
     paddingBottom: 5,
-    color: "#cecead",
+    color: "#cdcdcd",
   },
   inputArea: {
     justifyContent: "center",
     flex: 1,
-    backgroundColor: "#203b3b",
+    backgroundColor: "#204c4c",
     padding: 10,
     width: 330,
   },
@@ -74,7 +83,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 30,
     fontWeight: "bold",
-    color: "#6e6e5d",
+    color: "#204c4c",
   },
   body: {
     flex: 10,
