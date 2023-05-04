@@ -16,13 +16,9 @@ const List = (props) => {
   ]);
 
   const backColor = (index) => {
-    if (data.length < 6) {
-      return `rgba(30,103,100,0.9)`;
-    } else {
-      if (index < 6) {
-        return `rgba(30,103,100,0.${data.length - index})`;
-      } else return `rgba(30,103,100,0.7)`;
-    }
+    if (index < 6) {
+      return `rgba(30,103,100,0.${data.length - index})`;
+    } else return `rgba(30,103,100,0.7)`;
   };
 
   const { task, setnewTask } = props;
