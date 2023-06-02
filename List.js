@@ -2,23 +2,22 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { View, FlatList, StyleSheet, Text } from "react-native";
+import { useFonts } from "expo-font";
 
 const List = (props) => {
   const [data, setDATA] = useState([
     {
       id: "58694a0f-3da1-471f-bd96-14571eh9d72",
-      title: "Third Item",
-    },
-    {
-      id: "58694akf-3da1-47bf-bd96-14571eh9d72",
-      title: "Third Item",
+      title: "Hello",
     },
   ]);
 
   const backColor = (index) => {
-    if (index < 6) {
+    if (index == 0) return `rgba(30,103,100,0.9)`; 
+    if (index < 6 && index > 0) {
       return `rgba(30,103,100,0.${data.length - index})`;
-    } else return `rgba(30,103,100,0.7)`;
+    }
+    return `rgba(30,103,100,0.3)`;
   };
 
   const { task, setnewTask } = props;
@@ -49,7 +48,13 @@ const List = (props) => {
             },
           ]}
         >
-          <Text style={styles.title}>{item.title}</Text>
+          <Text
+            style={styles.title}
+            numberOfLines={1}
+            onPress={() => console.log(index)}
+          >
+            {item.title}
+          </Text>
           <TouchableOpacity
             style={[styles.title, styles.x]}
             onPress={() => {
@@ -65,7 +70,6 @@ const List = (props) => {
       keyExtractor={(item) => item.id}
     />
   );
-
   {
     return data.length == 0 ? (
       <Text style={styles.empty}>
