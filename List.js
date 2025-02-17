@@ -13,7 +13,7 @@ const List = (props) => {
   ]);
 
   const backColor = (index) => {
-    if (index == 0) return `rgba(30,103,100,0.9)`; 
+    if (index == 0) return `rgba(30,103,100,0.9)`;
     if (index < 6 && index > 0) {
       return `rgba(30,103,100,0.${data.length - index})`;
     }
@@ -84,6 +84,7 @@ const List = (props) => {
 const styles = StyleSheet.create({
   item: {
     padding: 20,
+    paddingVertical: 10,
     marginVertical: 8,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -92,8 +93,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   title: {
-    fontSize: 32,
+    fontSize: 29,
     color: "#ececec",
+    maxWidth: "80%",
   },
   x: {
     paddingY: 20,
